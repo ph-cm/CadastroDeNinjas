@@ -1,4 +1,4 @@
-package dev.balastro.CadastroDeNinjas;
+package dev.balastro.cadastrodeninjas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
