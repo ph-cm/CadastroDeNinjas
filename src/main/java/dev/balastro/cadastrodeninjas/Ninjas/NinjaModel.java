@@ -1,11 +1,14 @@
-package dev.balastro.cadastrodeninjas;
+package dev.balastro.cadastrodeninjas.Ninjas;
 
+import dev.balastro.cadastrodeninjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 // JPA = Java Persistence API
 @Entity //transformar essa classe em uma entidade para o banco de dados, criando uma tabela comas as colunas das respectivas variaveis
 @Table(name = "tb_cadastro")
-public class NinjaModel {
+public class NinjaModel{
 
     @Id //Atributo logo abaixo sera o ID
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Passar uma estrategia de como sera passado o id
@@ -14,6 +17,7 @@ public class NinjaModel {
     private String nome;
     private String email;
     private int idade;
+    private List<MissoesModel> missoes; // lista de missao
 
     //construtor no args
     public NinjaModel() {
