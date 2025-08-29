@@ -19,11 +19,11 @@ public class NinjaModel {
     @Id //Atributo logo abaixo sera o ID
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Passar uma estrategia de como sera passado o id
     // transformar isso em tabela (entidades) que sera salva no banco
-
     private Long id; //por causa do banco
 
     private String nome;
 
+    @Column(unique = true) //evita emails repetidos
     private String email;
 
     private int idade;
