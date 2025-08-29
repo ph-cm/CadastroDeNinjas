@@ -2,13 +2,19 @@ package dev.balastro.cadastrodeninjas.Ninjas;
 
 import dev.balastro.cadastrodeninjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 // JPA = Java Persistence API
 @Entity //transformar essa classe em uma entidade para o banco de dados, criando uma tabela comas as colunas das respectivas variaveis
 @Table(name = "tb_cadastro")
-public class NinjaModel{
+@NoArgsConstructor // lombok ja cria automaticamente
+@AllArgsConstructor // lombok
+@Data // criar getter e setter
+public class NinjaModel {
 
     @Id //Atributo logo abaixo sera o ID
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Passar uma estrategia de como sera passado o id
@@ -27,38 +33,5 @@ public class NinjaModel{
     @JoinColumn(name = "missoes_id") // Foreing Key == vai adicionar mais uma coluna(uma especie de chave)
     private MissoesModel missoes;
 
-
-    //construtor no args
-    public NinjaModel() {
-    }
-    //construtor full args
-    public NinjaModel(String nome, String email, int idade) {
-        this.nome = nome;
-        this.email = email;
-        this.idade = idade;
-    }
-    //getters and setters
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
+    private String corDoOlho;
 }
