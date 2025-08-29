@@ -13,11 +13,20 @@ public class NinjaModel{
     @Id //Atributo logo abaixo sera o ID
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Passar uma estrategia de como sera passado o id
     // transformar isso em tabela (entidades) que sera salva no banco
+
     private Long id; //por causa do banco
+
     private String nome;
+
     private String email;
+
     private int idade;
-    private List<MissoesModel> missoes; // lista de missao
+
+    // Classe ninja tera somente uma unica missao atrelada a cada objeto
+    @ManyToOne // coluna que tenha somente um elemento
+    @JoinColumn(name = "missoes_id") // Foreing Key == vai adicionar mais uma coluna(uma especie de chave)
+    private MissoesModel missoes;
+
 
     //construtor no args
     public NinjaModel() {
