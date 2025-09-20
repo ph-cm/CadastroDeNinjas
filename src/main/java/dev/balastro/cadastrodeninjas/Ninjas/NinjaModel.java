@@ -23,10 +23,14 @@ public class NinjaModel {
 
     private String nome;
 
-    @Column(unique = true) //evita emails repetidos
+    @Column(unique = true)//evita emails repetidos
     private String email;
 
+    @Column(name = "idade")
     private int idade;
+
+    @Column(name = "img_url")
+    private String imgURL;
 
     // Classe ninja tera somente uma unica missao atrelada a cada objeto
     @ManyToOne // coluna que tenha somente um elemento
