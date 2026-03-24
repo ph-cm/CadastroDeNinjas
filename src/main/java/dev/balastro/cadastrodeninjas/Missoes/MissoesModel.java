@@ -1,5 +1,6 @@
 package dev.balastro.cadastrodeninjas.Missoes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.balastro.cadastrodeninjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,7 +24,8 @@ public class MissoesModel {
 
     private String dificuldade;
 
-    @OneToMany(mappedBy = "missoes") // uma missao pode ter varios ninjas
+    @OneToMany(mappedBy = "missoes")
+    @JsonIgnore// uma missao pode ter varios ninjas
     private List<NinjaModel> ninjas; // pois preciso de linkar um ninja a missao
 
 }

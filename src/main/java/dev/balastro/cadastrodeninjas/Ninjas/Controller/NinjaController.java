@@ -1,10 +1,21 @@
 package dev.balastro.cadastrodeninjas.Ninjas.Controller;
 
+import dev.balastro.cadastrodeninjas.Ninjas.NinjaModel;
+import dev.balastro.cadastrodeninjas.Ninjas.Service.NInjaService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController //falando o que é uma annotation controller (Fala que é um controller)
 @RequestMapping("/ninjas") // mapeamento de rotas(colocar todas as rotas num mesmo lugar
 public class NinjaController {
+
+    private NInjaService nInjaService;
+
+    public NinjaController(NInjaService nInjaService) {
+        this.nInjaService = nInjaService;
+    }
+
     // Controller
     @GetMapping("/boasvindas") // pegar info boasvindas e joga na rota localhost:8080/boasVindas
     public String boasVindas(){
@@ -24,8 +35,13 @@ public class NinjaController {
         return "Ninja Tal de Id Tal";
     }
 
+    @GetMapping("/listar")
+    public List<NinjaModel> listarNinjas(){
+        return nInjaService.listarNinjas();
+    }
+
     //Mostrar Ninja (READ)
-    @GetMapping("/mostar")
+    @GetMapping("/mostarPorId")
     public String mostrarTodosOsNinjas(){
         return "Todos os Ninjas";
     }
