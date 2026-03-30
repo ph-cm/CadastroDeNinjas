@@ -25,8 +25,8 @@ public class NinjaController {
     //Endpoints
     //Adicionar Ninja (CREATE)
     @PostMapping("/criar")
-    public String criarNinja(){
-        return "Ninja Criado";
+    public NinjaModel criarNinja(@RequestBody NinjaModel ninja){
+        return nInjaService.criarNinja(ninja);
     }
 
     //Procurar Ninja por ID (READ)
@@ -39,7 +39,7 @@ public class NinjaController {
     public List<NinjaModel> listarNinjas(){
         return nInjaService.listarNinjas();
     }
-
+ 
     //Mostrar Ninja (READ)
     @GetMapping("/listar/{id}")
     public NinjaModel listarNinjasPorId(@PathVariable Long id){ //PATHVARIABLE == VARIAVEL QUE VEM DO CLIENTE
