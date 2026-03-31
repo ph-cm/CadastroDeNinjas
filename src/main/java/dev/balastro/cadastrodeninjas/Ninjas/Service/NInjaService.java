@@ -32,4 +32,9 @@ public class NInjaService {
     public NinjaModel criarNinja(NinjaModel ninja){ //PARAMETROS DO NINJA MODEL
         return ninjaRepository.save(ninja);
     }
+
+    //deletar ninja -- tem que ser metodo void, pois, nao precisa retornar nada pro servidor
+    public void deletarNinja(Long id){
+        ninjaRepository.deleteById(id);
+    }
 }
