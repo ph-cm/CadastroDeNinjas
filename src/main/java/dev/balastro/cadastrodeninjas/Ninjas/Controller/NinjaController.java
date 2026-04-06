@@ -1,5 +1,6 @@
 package dev.balastro.cadastrodeninjas.Ninjas.Controller;
 
+import dev.balastro.cadastrodeninjas.Ninjas.NinjaDTO;
 import dev.balastro.cadastrodeninjas.Ninjas.NinjaModel;
 import dev.balastro.cadastrodeninjas.Ninjas.Service.NInjaService;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class NinjaController {
     //Endpoints
     //Adicionar Ninja (CREATE)
     @PostMapping("/criar")
-    public NinjaModel criarNinja(@RequestBody NinjaModel ninja){
+    public NinjaDTO criarNinja(@RequestBody NinjaDTO ninja){
         return nInjaService.criarNinja(ninja);
     }
 

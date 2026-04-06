@@ -1,5 +1,7 @@
 package dev.balastro.cadastrodeninjas.Ninjas.Service;
 
+import dev.balastro.cadastrodeninjas.Ninjas.NinjaDTO;
+import dev.balastro.cadastrodeninjas.Ninjas.NinjaMapper;
 import dev.balastro.cadastrodeninjas.Ninjas.NinjaModel;
 import dev.balastro.cadastrodeninjas.Ninjas.Repository.NinjaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +14,12 @@ import java.util.Optional;
 public class NInjaService {
 
     private NinjaRepository ninjaRepository;
+    private NinjaMapper ninjaMapper;
 
-    public NInjaService(NinjaRepository ninjaRepository) {
+    public NInjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
+
     }
 
     //Listar todos os ninjas
@@ -28,9 +33,11 @@ public class NInjaService {
         return ninjaPorId.orElse(null);
     }
 
-    //Inserir/criar ninja
-    public NinjaModel criarNinja(NinjaModel ninja){ //PARAMETROS DO NINJA MODEL
-        return ninjaRepository.save(ninja);
+    //criar ninja
+    public NinjaDTO criarNinja(NinjaDTO ninjaDTO){ //PARAMETROS DO NINJA MODEL
+        NinjaModel ninja = ninjaMapper.map(ninjaDTO);
+        ninja = ninjaRepository.save(ninja);
+        return ninjaMapper.map(ninja);
     }
 
     //deletar ninja -- tem que ser metodo void, pois, nao precisa retornar nada pro servidor
@@ -46,4 +53,6 @@ public class NInjaService {
         }
         return null; // caso nao exista esse id
     }
+
+
 }
