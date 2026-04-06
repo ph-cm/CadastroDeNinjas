@@ -37,5 +37,7 @@ public class NinjaModel {
     @JoinColumn(name = "missoes_id") // Foreing Key == vai adicionar mais uma coluna(uma especie de chave)
     private MissoesModel missoes;
 
+    @Column (name = "rank")
+    private String rank;
 
 }
