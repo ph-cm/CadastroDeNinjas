@@ -1,5 +1,6 @@
 package dev.balastro.cadastrodeninjas.Ninjas.Controller;
 
+import dev.balastro.cadastrodeninjas.Ninjas.NinjaDTO;
 import dev.balastro.cadastrodeninjas.Ninjas.NinjaModel;
 import dev.balastro.cadastrodeninjas.Ninjas.Service.NInjaService;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class NinjaController {
     //Endpoints
     //Adicionar Ninja (CREATE)
     @PostMapping("/criar")
-    public NinjaModel criarNinja(@RequestBody NinjaModel ninja){
+    public NinjaDTO criarNinja(@RequestBody NinjaDTO ninja){
         return nInjaService.criarNinja(ninja);
     }
 
@@ -36,19 +37,19 @@ public class NinjaController {
     }
 
     @GetMapping("/listar")
-    public List<NinjaModel> listarNinjas(){
+    public List<NinjaDTO> listarNinjas(){
         return nInjaService.listarNinjas();
     }
  
     //Mostrar Ninja (READ)
     @GetMapping("/listar/{id}")
-    public NinjaModel listarNinjasPorId(@PathVariable Long id){ //PATHVARIABLE == VARIAVEL QUE VEM DO CLIENTE
+    public NinjaDTO listarNinjasPorId(@PathVariable Long id){ //PATHVARIABLE == VARIAVEL QUE VEM DO CLIENTE
         return nInjaService.listarNinjasPorId(id);
     }
 
-    //Alterar Ninja(UPDATE) put altera todo o objeto
+    //Alterar Ninja(UPDATE) put altera toodo o objeto
     @PutMapping("/alterar/{id}")
-    public NinjaModel alterarNinjaPorId(@PathVariable Long id, @RequestBody NinjaModel ninjaAtualizado){
+    public NinjaDTO alterarNinjaPorId(@PathVariable Long id, @RequestBody NinjaDTO ninjaAtualizado){
         return nInjaService.atualizarninja(id, ninjaAtualizado);
     }
 
